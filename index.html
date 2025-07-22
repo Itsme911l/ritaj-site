@@ -1,35 +1,36 @@
-<!DOCTYPE html>
-<html lang="ar">
-<head>
-  <meta charset="UTF-8" />
-  <title>حبيبتي ريتاج</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cairo&display=swap');
-    body {
-      margin: 0;
-      height: 100vh;
-      background: radial-gradient(circle at center, #0b3d91, #000814);
-      font-family: 'Cairo', sans-serif;
-      color: #fff;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 20px;
+<!-- زر "أحبك يا ريتاج" -->
+<button onclick="showLove()">أحبك يا ريتاج ❤️</button>
+
+<!-- رسالة الحب -->
+<p id="loveMessage" style="display:none; font-size: 1.3rem; color: pink; margin-top: 20px;">
+  أحبك بكل نبضة في قلبي، وكل همسة في روحي… ريتاج، أنتِ معجزة دخلت حياتي 💖
+</p>
+
+<!-- الموسيقى -->
+<audio id="nasheed" loop>
+  <source src="https://ia803203.us.archive.org/3/items/shireenkeda/KedaYaAlby.mp3" type="audio/mpeg" />
+  متصفحك لا يدعم تشغيل الصوت.
+</audio>
+<button id="btnPlay">تشغيل الأغنية</button>
+
+<script>
+  function showLove() {
+    document.getElementById('loveMessage').style.display = 'block';
+  }
+
+  const audio = document.getElementById('nasheed');
+  const btn = document.getElementById('btnPlay');
+  let playing = false;
+
+  btn.addEventListener('click', () => {
+    if (!playing) {
+      audio.play();
+      btn.textContent = 'إيقاف الأغنية';
+      playing = true;
+    } else {
+      audio.pause();
+      btn.textContent = 'تشغيل الأغنية';
+      playing = false;
     }
-    h1 {
-      font-size: 4rem;
-      margin: 0 0 10px;
-      text-shadow: 0 0 15px #66aaff, 0 0 30px #4499ff;
-    }
-    p {
-      font-size: 1.5rem;
-      margin: 0 0 15px;
-      color: #aad4ffcc;
-      line-height: 1.8;
-      max-width: 700px;
-    }
-    .stars {
-      position: fixed
+  });
+</script>
